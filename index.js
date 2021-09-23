@@ -3,13 +3,15 @@ const app = express()
 app.set('view engine', 'ejs')
 
 
-app.get("/",(req,res)=>{
-    let nome = "Gustavo"
-    let linguagem = "JavaScript"
+app.get("/:nome/:lang",(req,res)=>{
+    let nome = req.params.nome
+    let linguagem = req.params.lang
+    let msg = false
     res.render('index',{
         nome : nome,
         lang: linguagem,
-        empresa: "RRDOCS"
+        empresa: "RRDOCS",
+        msg: msg
     })
 })
 app.get("/home",(req,res)=>{
